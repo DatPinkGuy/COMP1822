@@ -22,6 +22,7 @@ using UnityEngine;
 /// </summary>
 public class OVRGrabbable : MonoBehaviour
 {
+	[SerializeField] protected GameObject snapPoint;
     [SerializeField]
     protected bool m_allowOffhandGrab = true;
     [SerializeField]
@@ -130,6 +131,10 @@ public class OVRGrabbable : MonoBehaviour
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         m_grabbedCollider = null;
+        if (snapPoint)
+        {
+	        this.transform.position = snapPoint.transform.position;
+        }
     }
 
     void Awake()
