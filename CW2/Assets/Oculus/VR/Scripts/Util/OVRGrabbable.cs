@@ -22,7 +22,15 @@ using UnityEngine;
 /// </summary>
 public class OVRGrabbable : MonoBehaviour
 {
-    [SerializeField]
+	public bool machineGrabbable;
+	public GameObject machineParent;
+	public float maxX;
+	public float maxY;
+	public float minX;
+	public float minY;
+	//never again
+
+	[SerializeField]
     protected bool m_allowOffhandGrab = true;
     [SerializeField]
     protected bool m_snapPosition = false;
@@ -130,6 +138,11 @@ public class OVRGrabbable : MonoBehaviour
         rb.angularVelocity = angularVelocity;
         m_grabbedBy = null;
         m_grabbedCollider = null;
+        if (machineGrabbable)
+        {
+	        this.transform.position = machineParent.transform.position;
+	        this.transform.rotation = machineParent.transform.rotation;
+        }
     }
 
     void Awake()
