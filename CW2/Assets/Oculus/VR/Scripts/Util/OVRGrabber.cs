@@ -62,6 +62,8 @@ public class OVRGrabber : MonoBehaviour
 	protected Dictionary<OVRGrabbable, int> m_grabCandidates = new Dictionary<OVRGrabbable, int>();
 	protected bool operatingWithoutOVRCameraRig = true;
 
+    public Collider[] grabVolumes => m_grabVolumes;
+
     /// <summary>
     /// The currently grabbed object.
     /// </summary>
@@ -315,7 +317,6 @@ public class OVRGrabber : MonoBehaviour
         //horrendous
         else if (grabbedObject.machineGrabbable)
         {
-            Debug.Log("death");
             grabbedRigidbody.MovePosition(grabbablePosition);
             grabbedRigidbody.MoveRotation(grabbableRotation);
             var transformPosition = m_grabbedObj.machineParent.transform.position;
