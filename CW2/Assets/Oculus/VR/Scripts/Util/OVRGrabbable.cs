@@ -23,6 +23,13 @@ using UnityEngine;
 public class OVRGrabbable : MonoBehaviour
 {
 	[SerializeField] protected GameObject snapPoint;
+	public bool machineGrabbable;
+	public GameObject machineParent;
+	public float maxX;
+	public float maxY;
+	public float minX;
+	public float minY;
+	//never again
     [SerializeField]
     protected bool m_allowOffhandGrab = true;
     [SerializeField]
@@ -134,6 +141,11 @@ public class OVRGrabbable : MonoBehaviour
         if (snapPoint)
         {
 	        this.transform.position = snapPoint.transform.position;
+        }
+        if (machineGrabbable)
+        {
+	        this.transform.position = machineParent.transform.position;
+	        this.transform.rotation = machineParent.transform.rotation;
         }
     }
 
