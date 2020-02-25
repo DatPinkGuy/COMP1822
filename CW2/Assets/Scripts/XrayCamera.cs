@@ -10,8 +10,12 @@ public class XrayCamera : MonoBehaviour
     [SerializeField] private Transform snapPoint => GetComponentInChildren<Transform>();
     private Rigidbody rb => GetComponent<Rigidbody>();
     public bool handSnap;
-    private Vector3 _oldDirection;
+    private Vector3 _oldRotation;
+    private Vector3 _currentRotation;
+    private Vector3 _rotationDifference; 
     private float _angle;
+    private Quaternion _rotationQuaternion;
+    private Transform HandTransform => handGrabber.transform;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,15 +45,16 @@ public class XrayCamera : MonoBehaviour
 
     private void CameraFunctionality()
     {
-        handGrabber.transform.position = snapPoint.position;
-        Vector3 rotation = new Vector3(0,handGrabber.transform.rotation.y*-360,0);
-        transform.rotation = Quaternion.Euler(rotation);
-        _oldDirection = handGrabber.transform.InverseTransformDirection(handGrabber.transform.up);
-        xrayCamera.fieldOfView = handGrabber.transform.rotation.y * -90;
+        _currentRotation = new Vector3(0,HandTransform.rotation.y,0);
+        HandTransform.position = snapPoint.position;
+        _rotationDifference = (_currentRotation - _oldRotation) * 360;
+        _oldRotation = _currentRotation;
+        _rotationQuaternion = transform.rotation * Quaternion.Euler(_rotationDifference);
+        transform.rotation = _rotationQuaternion; //at some point after reaching certain value starts rotating in different direction
+        xrayCamera.fieldOfView = transform.rotation.y * -180;
         if (!OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
             handSnap = false;
-            //handGrabber.transform.position = new Vector3(0,0,0);
         }
     }
 }
