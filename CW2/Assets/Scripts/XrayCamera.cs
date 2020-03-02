@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class XrayCamera : MonoBehaviour
 {
-    [SerializeField] private Camera xrayCamera;
+    public Camera xrayCamera;
     [SerializeField] private OVRGrabber handGrabber;
     [SerializeField] private Transform snapPoint => GetComponentInChildren<Transform>();
     private Rigidbody rb => GetComponent<Rigidbody>();
@@ -45,13 +45,10 @@ public class XrayCamera : MonoBehaviour
 
     private void CameraFunctionality()
     {
-        _currentRotation = new Vector3(0,HandTransform.rotation.y,0);
+        Vector3 rotation = new Vector3(0, handGrabber.transform.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Euler(rotation);
+        xrayCamera.fieldOfView = transform.rotation.y * 180;
         HandTransform.position = snapPoint.position;
-        _rotationDifference = (_currentRotation - _oldRotation) * 360;
-        _oldRotation = _currentRotation;
-        _rotationQuaternion = transform.rotation * Quaternion.Euler(_rotationDifference);
-        transform.rotation = _rotationQuaternion; //at some point after reaching certain value starts rotating in different direction
-        xrayCamera.fieldOfView = transform.rotation.y * -180;
         if (!OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
             handSnap = false;
