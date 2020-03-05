@@ -5,22 +5,22 @@ using UnityEngine;
 
 public class ResultArea : MonoBehaviour
 {
-    public List<ResultColliders> _colliderForXray;
-    public List<Collider> _colliderList;
+    [HideInInspector] public List<ResultColliders> colliderForXray;
+    [HideInInspector] public List<Collider> colliderList;
     public List<Collider> colliderInArea;
     // Start is called before the first frame update
     void Start()
     {
-        _colliderForXray.AddRange(FindObjectsOfType<ResultColliders>());
-        foreach (var col in _colliderForXray)
+        colliderForXray.AddRange(FindObjectsOfType<ResultColliders>());
+        foreach (var col in colliderForXray)
         {
-            _colliderList.Add(col.GetComponent<Collider>());
+            colliderList.Add(col.GetComponent<Collider>());
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        foreach (var col in _colliderList)
+        foreach (var col in colliderList)
         {
             if (col == other) colliderInArea.Add(col);
         }
@@ -28,7 +28,7 @@ public class ResultArea : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        foreach (var col in _colliderList)
+        foreach (var col in colliderList)
         {
             if (col == other) colliderInArea.Remove(col);
         } 
