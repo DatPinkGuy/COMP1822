@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using OVRTouchSample;
 using UnityEngine;
 
 public class XrayCamera : MonoBehaviour
@@ -16,6 +17,7 @@ public class XrayCamera : MonoBehaviour
     private float _angle;
     private Quaternion _rotationQuaternion;
     private Transform HandTransform => handGrabber.transform;
+    private bool _reset;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,12 @@ public class XrayCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!handSnap) return;
+        if (!handSnap)
+        {
+            if (_reset) return;
+            StartCoroutine(ResetHand()); //doesnt work because Oculus are a failure
+            return;
+        }
         CameraFunctionality();
     }
 
@@ -39,7 +46,7 @@ public class XrayCamera : MonoBehaviour
                 {
                     handSnap = true;
                 }
-            }
+            } 
         }
     }
 
@@ -52,6 +59,17 @@ public class XrayCamera : MonoBehaviour
         if (!OVRInput.Get(OVRInput.Button.SecondaryHandTrigger))
         {
             handSnap = false;
+            _reset = false;
         }
+    }
+
+    IEnumerator ResetHand()
+    {
+        _reset = true;
+        yield return new WaitForSeconds(0.5f);
+        OVRInput.SetControllerVibration(1f, 1f);
+        OVRInput.RecenterController();
+        Debug.Log(OVRInput.GetControllerWasRecentered());
+        
     }
 }
