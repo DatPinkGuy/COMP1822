@@ -17,7 +17,6 @@ public class XrayResult : MonoBehaviour
     [SerializeField] private String cameraTooFar;
     private ResultArea _resultArea;
     private XrayCamera _xRayCamera;
-    //private bool _isResultFine;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,14 +28,12 @@ public class XrayResult : MonoBehaviour
     
     public void ShootXray()
     {
-        var currentRT = RenderTexture.active;
         RenderTexture.active = _xRayCamera.xrayCamera.targetTexture;
         _xRayCamera.xrayCamera.Render();
         Texture2D image2D = new Texture2D( _xRayCamera.xrayCamera.targetTexture.width,  _xRayCamera.xrayCamera.targetTexture.height);
         image2D.ReadPixels(new Rect(0, 0,  _xRayCamera.xrayCamera.targetTexture.width,  _xRayCamera.xrayCamera.targetTexture.height), 0, 0);
         image2D.Apply();
         image.texture = image2D;
-        //////
         textResult.text = null;
         textResult.enabled = true;
         image.enabled = true;
@@ -45,7 +42,6 @@ public class XrayResult : MonoBehaviour
         {
             if (_resultArea.colliderInArea.Count >= 2)
             {
-                //_isResultFine = true;
                 textResult.text = goodResult;
             }
             else
