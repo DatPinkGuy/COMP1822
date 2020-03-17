@@ -140,12 +140,12 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedCollider = null;
         if (snapPoint)
         {
-	        this.transform.position = snapPoint.transform.position;
+	        transform.position = snapPoint.transform.position;
         }
         if (machineGrabbable)
         {
-	        this.transform.position = machineParent.transform.position;
-	        this.transform.rotation = machineParent.transform.rotation;
+	        transform.position = machineParent.transform.position;
+	        transform.rotation = machineParent.transform.rotation;
         }
     }
 

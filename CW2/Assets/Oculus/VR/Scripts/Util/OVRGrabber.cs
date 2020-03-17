@@ -321,7 +321,22 @@ public class OVRGrabber : MonoBehaviour
             grabbedRigidbody.MoveRotation(grabbableRotation);
             var transformPosition = m_grabbedObj.machineParent.transform.position;
             transformPosition = new Vector3(grabbablePosition.x,grabbablePosition.y,0);
-            if(transformPosition.x > m_grabbedObj.maxX || transformPosition.x < m_grabbedObj.minX || transformPosition.y > m_grabbedObj.maxY || transformPosition.y < m_grabbedObj.minY) return;
+            if (transformPosition.x > m_grabbedObj.maxX)
+            {
+                transformPosition.x = m_grabbedObj.maxX;
+            }
+            else if (transformPosition.x < m_grabbedObj.minX)
+            {
+                transformPosition.x = m_grabbedObj.minX;
+            }
+            if (transformPosition.y > m_grabbedObj.maxY)
+            {
+                transformPosition.y = m_grabbedObj.maxY;
+            }
+            else if (transformPosition.y < m_grabbedObj.minY)
+            {
+                transformPosition.y = m_grabbedObj.minY;
+            }
             m_grabbedObj.machineParent.transform.position = transformPosition;
         }
         
