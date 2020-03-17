@@ -69,7 +69,5 @@ public class XrayCamera : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         OVRInput.SetControllerVibration(1f, 1f);
         OVRInput.RecenterController();
-        Debug.Log(OVRInput.GetControllerWasRecentered());
-        
     }
 }

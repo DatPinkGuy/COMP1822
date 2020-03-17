@@ -9,8 +9,11 @@ public class XrayResult : MonoBehaviour
     [SerializeField] private Vector2 minMaxFov;
     [SerializeField] private RawImage image;
     [SerializeField] private Text textResult;
+    [TextArea]
     [SerializeField] private String goodResult;
+    [TextArea]
     [SerializeField] private String handPositionBad;
+    [TextArea]
     [SerializeField] private String cameraTooFar;
     private ResultArea _resultArea;
     private XrayCamera _xRayCamera;
@@ -24,7 +27,7 @@ public class XrayResult : MonoBehaviour
         _resultArea = FindObjectOfType<ResultArea>();
     }
     
-    private void OnTriggerEnter(Collider other)
+    public void ShootXray()
     {
         var currentRT = RenderTexture.active;
         RenderTexture.active = _xRayCamera.xrayCamera.targetTexture;
