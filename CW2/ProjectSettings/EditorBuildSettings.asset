@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/X-Ray Main Menu.unity
     guid: 16c42504b667b1746973c86cc2685dae
+  - enabled: 1
+    path: Assets/Scenes/X-Ray Room.unity
+    guid: 4f25a60932b06c940b197845fa181a73
   m_configObjects: {}
