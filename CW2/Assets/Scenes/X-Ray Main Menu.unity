@@ -398,6 +398,7 @@ GameObject:
   - component: {fileID: 161820501}
   - component: {fileID: 161820500}
   - component: {fileID: 161820499}
+  - component: {fileID: 161820502}
   m_Layer: 0
   m_Name: Hand Seletion
   m_TagString: Untagged
@@ -467,7 +468,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 161820500}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 161820502}
+        m_MethodName: LoadingScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: X-RayRoom
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &161820500
@@ -508,6 +520,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161820497}
   m_CullTransparentMesh: 0
+--- !u!114 &161820502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161820497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e09b2ee5953534a9691c167cc021ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &223726419
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &327394385
 RectTransform:
   m_ObjectHideFlags: 0
