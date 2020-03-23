@@ -2014,7 +2014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1212088445
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2553,16 +2553,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chairs2
       objectReference: {fileID: 0}
-    - target: {fileID: 3319651216696503136, guid: e84d62fb81ebb7e44ab3e339b0510a25,
-        type: 3}
-      propertyPath: m_Name
-      value: Receptionist Chair
-      objectReference: {fileID: 0}
-    - target: {fileID: 6369386550311475014, guid: e84d62fb81ebb7e44ab3e339b0510a25,
-        type: 3}
-      propertyPath: m_Name
-      value: Chair1
-      objectReference: {fileID: 0}
     - target: {fileID: -4754179579645652643, guid: e84d62fb81ebb7e44ab3e339b0510a25,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2667,6 +2657,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3319651216696503136, guid: e84d62fb81ebb7e44ab3e339b0510a25,
+        type: 3}
+      propertyPath: m_Name
+      value: Receptionist Chair
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369386550311475014, guid: e84d62fb81ebb7e44ab3e339b0510a25,
+        type: 3}
+      propertyPath: m_Name
+      value: Chair1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e84d62fb81ebb7e44ab3e339b0510a25, type: 3}
